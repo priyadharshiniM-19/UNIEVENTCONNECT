@@ -1,0 +1,29 @@
+modules = ["nodejs-20", "web"]
+
+[nix]
+channel = "stable-25_05"
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 46751508
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd UNICONNECTSUCCESS/UniEventConnect && npm run dev"
+
+[[workflows.workflow]]
+name = "Build"
+author = 46751508
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd UNICONNECTSUCCESS/UniEventConnect && npm run build"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
